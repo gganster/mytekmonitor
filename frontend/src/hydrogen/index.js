@@ -18,11 +18,11 @@ import Select from "./components/Form/Select";
 import DatePicker from "./components/Form/DatePicker";
 import DateTimePicker from "./components/Form/DateTimePicker";
 import TimePicker from "./components/Form/TimePicker";
-import ColorPicker from "./components/Form/ColorPicker";
+import ColorPicker from "./components/Form/ColorPicker";//TODO
 
 //view components
 import Calendar from "./components/Views/Calendar";
-import Kanban from "./components/Views/Kanban";
+import Kanban from "./components/Views/Kanban";//TODO
 import Table from "./components/Views/Table";
 
 //helpers

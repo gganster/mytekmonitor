@@ -63,6 +63,7 @@ const useRouterConfig = () => {
     //-------------------------- user -------------------------------//
     {name: "overview", route: "",         layout: "dashboard", access: "connected", component: Overview, icon: faHome},
 
+
     //-------------------------- admin -------------------------------//
   ];
 
