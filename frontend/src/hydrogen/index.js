@@ -13,7 +13,6 @@ import TextArea from "./components/Form/TextArea";
 import NumInput from "./components/Form/NumInput";
 import Checkbox from "./components/Form/Checkbox";
 import RadioGroup from "./components/Form/RadioGroup";
-import RichEditor from "./components/Form/RichEditor";
 import Select from "./components/Form/Select";
 import DatePicker from "./components/Form/DatePicker";
 import DateTimePicker from "./components/Form/DateTimePicker";
@@ -44,7 +43,6 @@ export {
   NumInput,
   Checkbox,
   RadioGroup,
-  RichEditor,
   Select,
   DatePicker,
   DateTimePicker,
