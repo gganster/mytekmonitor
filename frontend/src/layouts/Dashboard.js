@@ -11,6 +11,10 @@ import useAuth from "hydrogen/core/hooks/useAuth";
 
 import Logo from "assets/img/hydrogen.png";
 
+import { Select} from "hydrogen"
+import config from "config.js"
+
+
 const Dashboard = (props) => {
   const {children} = props;
   const history = useHistory();
@@ -32,7 +36,6 @@ const Dashboard = (props) => {
                           return accessFilter[0].isGranted
                         })
                         .filter(r => r.hide !== true);
-    
     return (
       <>
         {links.map(link => (
@@ -49,6 +52,7 @@ const Dashboard = (props) => {
       </>
     )
   }
+  const [url, setUrl] = useState('');
 
   return (
     <div className="min-h-screen flex flex-row">
@@ -63,7 +67,9 @@ const Dashboard = (props) => {
         <PerfectScrollbar className="flex-1 bg-gray-100 max-h-full p-5">
           {children}
         </PerfectScrollbar>
-        {/* Header */}
+        {/* Header */
+         <Select options={config.glancesInstance.map(i => ({label: i.name, value: i.url}))} onChange={setUrl} value={url}></Select>
+        }
         <div className={`flex items-center justify-between w-full max-h-14 h-14 shadow-md bg-white px-4`}
              style={{minHeight: "3.5rem"}}>
           {/* LEFT */}
