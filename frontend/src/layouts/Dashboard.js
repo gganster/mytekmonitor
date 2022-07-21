@@ -73,16 +73,17 @@ const Dashboard = (props) => {
         <PerfectScrollbar className="flex-1 bg-gray-100 max-h-full p-5">
           {children}
         </PerfectScrollbar>
-        {/* Header */
-         <Select options={config.glancesInstance} onChange={setInstance} value={instance}></Select>
-        }
         <div className={`flex items-center justify-between w-full max-h-14 h-14 shadow-md bg-white px-4`}
              style={{minHeight: "3.5rem"}}>
           {/* LEFT */}
-          <div>
+          <div className="flex flex-row align-center" style={{gap: 10}}>
             <FontAwesomeIcon icon={faBars} size="2x" color="#312E81"
                             className="cursor-pointer"
                             onClick={() => setSidebarOpen(!sidebarOpen)} />
+            <Select options={config.glancesInstance}
+                    style={{maxWidth: 300}}
+                    onChange={setInstance} value={instance} />
+            
           </div>
 
           <div></div>
