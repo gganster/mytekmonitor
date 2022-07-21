@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useContext, createContext} from "react";
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +52,9 @@ const Dashboard = (props) => {
       </>
     )
   }
+
   const [url, setUrl] = useState('');
+  const urlContexte=createContext(); //valeur par defaut ?
 
   return (
     <div className="min-h-screen flex flex-row">
@@ -67,7 +69,8 @@ const Dashboard = (props) => {
         <PerfectScrollbar className="flex-1 bg-gray-100 max-h-full p-5">
           {children}
         </PerfectScrollbar>
-        {/* Header */
+        {
+        /* Header */
          <Select options={config.glancesInstance.map(i => ({label: i.name, value: i.url}))} onChange={setUrl} value={url}></Select>
         }
         <div className={`flex items-center justify-between w-full max-h-14 h-14 shadow-md bg-white px-4`}
