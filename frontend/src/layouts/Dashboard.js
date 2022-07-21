@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 
 import useRouterConfig from "routes";
 import useAuth from "hydrogen/core/hooks/useAuth";
+import useInstance from "contexts/instance";
 
 import Logo from "assets/img/hydrogen.png";
 
@@ -19,15 +20,20 @@ const Dashboard = (props) => {
   const {children} = props;
   const history = useHistory();
 
+  const [instance, setInstance] = useInstance();
   const {access, routes, layouts} = useRouterConfig();
   const {logout} = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  //useEffect 
+
+  //fonctions (handler d'event, utilitaires ...)
   const _logout = () => {
     logout();
     history.push("/");
   }
 
+  //renders
   const renderSidebarLinks = () => {
     const links = routes.filter(r => {
                           let accessFilter = access.filter(a => a.name === r.access);
@@ -52,8 +58,8 @@ const Dashboard = (props) => {
       </>
     )
   }
-  const [url, setUrl] = useState('');
 
+  //render final
   return (
     <div className="min-h-screen flex flex-row">
       <div className={`flex flex-col min-h-screen h-screen max-h-screen overflow-y-hidden pt-4 pb-4 w-60 ${sidebarOpen ? "ml-0" : "-ml-60"}`}
@@ -68,7 +74,7 @@ const Dashboard = (props) => {
           {children}
         </PerfectScrollbar>
         {/* Header */
-         <Select options={config.glancesInstance.map(i => ({label: i.name, value: i.url}))} onChange={setUrl} value={url}></Select>
+         <Select options={config.glancesInstance.map(i => ({label: i.name, value: i.url}))} onChange={setInstance} value={instance}></Select>
         }
         <div className={`flex items-center justify-between w-full max-h-14 h-14 shadow-md bg-white px-4`}
              style={{minHeight: "3.5rem"}}>

@@ -5,7 +5,7 @@ const config = {
   strapi: {
     apiUrl: "http://localhost:1337",
   },
-  glancesInstance: [{name: "serveur1", url: "url1"}, {name: "serveur2", url: "url1"}],
+  glancesInstance: [{label: "serveur1", value: "url1"}, {label: "serveur2", value: "url1"}],
   debug: true,
 }
 

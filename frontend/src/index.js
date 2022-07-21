@@ -6,6 +6,7 @@ import useHydrogen from "./hydrogen/core/init";
 import Router from "./hydrogen/core/Router";
 import { ToastContainer } from 'react-toastify';
 import { Provider as UIProvider } from "./contexts/ui";
+import { Provider as InstanceProvider } from "./contexts/instance";
 
 const App = () => {
   useHydrogen(); //do not remove this line
@@ -15,7 +16,9 @@ const App = () => {
       <ToastContainer pauseOnFocusLoss={false}
                       theme="colored" />
       <UIProvider>
-        <Router />
+        <InstanceProvider>
+          <Router />
+        </InstanceProvider>
       </UIProvider>
     </>
   )
