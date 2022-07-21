@@ -4,7 +4,7 @@ import useData from "hooks/useData";
 
 const Overview = () => {
   const [instance] = useInstance();
-  const {cpu} = useData(instance.value);
+  const data = useData(instance.value);
 
   return (
     <div className="">
