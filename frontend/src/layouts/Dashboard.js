@@ -74,7 +74,7 @@ const Dashboard = (props) => {
           {children}
         </PerfectScrollbar>
         {/* Header */
-         <Select options={config.glancesInstance.map(i => ({label: i.name, value: i.url}))} onChange={setInstance} value={instance}></Select>
+         <Select options={config.glancesInstance} onChange={setInstance} value={instance}></Select>
         }
         <div className={`flex items-center justify-between w-full max-h-14 h-14 shadow-md bg-white px-4`}
              style={{minHeight: "3.5rem"}}>
