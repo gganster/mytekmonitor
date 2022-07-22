@@ -14,6 +14,7 @@ const Overview = () => {
       <Card>
         <div>
           Ceci est une seconde carte
+          {data.cpu.idle}
         </div>
       </Card>
     </div>
