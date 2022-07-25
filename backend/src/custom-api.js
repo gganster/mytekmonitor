@@ -1,11 +1,12 @@
 //path 
+const { createCoreRouter } = require("@strapi/strapi").factories;
 
-module.exports = {
+module.exports (apiUrl) = {
     routes: [
       {
         method: 'GET',
-        path: '/articles/customRoute', //apiURl ?
-        handler: 'controllerName.actionName', //localhost:3000.fetch_data() ?
+        path: `/${apiUrl}`, //apiUrl http://.../api/v3/...
+        handler: `//localhost:3000.fetch_data(${apiUrl})`, //localhost:3000.fetch_data() ? useData ?
         config: {
           auth: false,
         },

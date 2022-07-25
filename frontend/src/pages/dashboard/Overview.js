@@ -1,10 +1,12 @@
 import {Card} from "hydrogen"
 import useInstance from "contexts/instance";
 import useData from "hooks/useData";
+import graphData from "components/graphData";
 
 const Overview = () => {
   const [instance] = useInstance();
   const data = useData(instance.value);
+  const {CpuGraph} = graphData(data); //for later
 
   return (
     <div className="">
