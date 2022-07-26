@@ -41,7 +41,6 @@ const graphData = (data) => {
         
     </div>
 
-    console.log(cpu.idle)
     
     return {CpuGraph};
 }
