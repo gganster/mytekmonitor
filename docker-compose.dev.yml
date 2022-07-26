@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  mytekmonitor_frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../dockerfiles/Dockerfile.front.dev
+    environment:
+      WDS_SOCKET_PORT: "5000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5000:3000"
+
+  mytekmonitor_strapi:
+    build:
+      context: ./backend
+      dockerfile: ../dockerfiles/Dockerfile.back.dev
+    restart: unless-stopped
+    volumes:
+      - ./backend/:/opt/app/
+    ports:
+      - "5002:1337"
