@@ -119,7 +119,7 @@ const LocalHour = ({data}) => {
         Format local de la date : {moment.locale()}, 
         {console.log(moment(data.localHour).format('llll'))} {/**Prend pas la props */}
         <br/>
-        {data.localHour ? moment(data.localHour).format('llll') : "Error"}
+        {data.localHour ? moment(data.localHour).format("DD MM YYYY") : "Error"}
       </div>
     )
 }
@@ -127,12 +127,12 @@ const LocalHour = ({data}) => {
 const GlobalInfo = ({data}) => {
     return(
           <div>
-          OS : {data.sysInfo.hr_name} <br/>
-          La machine {data.sysInfo.hostname} est allumé depuis : <br/>
-          <UpTime data={data} />
-          Il est :
-          <LocalHour data={data} /> pour la machine
-        </div>
+            OS : {data.sysInfo.hr_name} <br/>
+            La machine {data.sysInfo.hostname} est allumé depuis : <br/>
+            <UpTime data={data} />
+            Il est :
+            <LocalHour data={data} /> pour la machine
+          </div>
     )
 }
 
@@ -143,29 +143,26 @@ const CpuGraphDetail = ({data}) => {  //tentative de graph avec plusieur bar ou 
                 Détails de l'utilisation du cpu 
                 ({data.cpu.cpucore ? data.cpu.cpucore : "Non acquis" } coeur)
             </p>
-            {data.quickLook.percpu ? data.quickLook.percpu.map
-            ( i => 
-              {
-                <Chart  
-                 options =
-                 {{
-                    labels : ["utilisé"],
-                    plotOption : 
-                    {
-                      radialBar:
-                      {
-                        startAngle: -90,
-                        endAngle: 90,
-                      }
+            <Chart
+                options =
+                {{
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 5,
+                      horizontal: false,
                     }
-                 }}
-                     series={[i.total]}
-                     type="radialBar"
-                     // height="50"
-                     width="250"
-                />
-              }
-            ) : "Not loaded"}
+                  },
+                  chart: {
+                    id: "basic-bar"
+                  },
+                   xaxis: {
+                    categories: data.quickLook.percpu ? data.quickLook.percpu.map(i => i.cpu_number) : [0]
+                  }
+                }}
+                series={[{name : "Details" ,data : data.quickLook.percpu ? data.quickLook.percpu.map(i => i.total) : [0] }]}
+                type="bar"
+                width="350"
+              />
         </div>
 )}
 
@@ -194,5 +191,10 @@ export {CpuGraph, CpuGraphDetail, MemGraph, ListDisk, ListProcess, UpTime, Local
  *     // height="50"
  *     width="250"
  * />
+ *  <p>
+             N° {data.quickLook.percpu ? data.quickLook.percpu.map(i => i.cpu_number) : [0]}<br/>
+             Donnée {data.quickLook.percpu ? data.quickLook.percpu.map(i => i.total) : [0]}
+
+            </p>
  * 
 */

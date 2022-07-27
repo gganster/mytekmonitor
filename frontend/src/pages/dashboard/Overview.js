@@ -13,7 +13,7 @@ const Overview = () => {
       <Card>
         <h3 className="">current instance: {instance.label} ({instance.value})</h3>
       </Card>
-      <Card>
+      <Card className="border-r">
         <GlobalInfo data={data} />
       </Card>
 
@@ -22,12 +22,12 @@ const Overview = () => {
           <div style={{display:"flex", gap:20}}>
             <CpuGraph data={data}/>
             <MemGraph data={data} />
-            {<CpuGraphDetail data={data} />}
-            {console.log(data.quickLook.percpu ? data.quickLook.percpu.map(i => i.total) : "0")}
+            <CpuGraphDetail data={data} />
+            {console.log(data.quickLook.percpu ? data.quickLook.percpu.map(i => i.cpu_number) : "0")}
           </div>
       </Card>
 
-      <Card>
+      <Card className="border-l">
         <div style={{display:"flex", gap:50}}>
           <ListDisk data={data}/>
           <ListProcess data={data}/>

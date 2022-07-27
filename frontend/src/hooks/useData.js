@@ -25,9 +25,7 @@ const useData = (apiUrl) => {
         }, 5000)
         //En dessous les donnée "fixe" (pas besoin de les actualisées)
         _fetchIP();
-        _fetchQuickLook(); 
         _fetchSystemInfo();
-
         return () => clearInterval(interval);
     }, [])
       
@@ -41,7 +39,8 @@ const useData = (apiUrl) => {
         _fetchProcessCount(),
         _fetchSystemHour(),
         _fetchDiskio(),
-        _fetchAmp()]);
+        _fetchAmp(),
+        _fetchQuickLook() ]);
 
         } catch(e) {
             setError(e);
