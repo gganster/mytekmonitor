@@ -80,9 +80,9 @@ const Dashboard = (props) => {
             <FontAwesomeIcon icon={faBars} size="2x" color="#312E81"
                             className="cursor-pointer"
                             onClick={() => setSidebarOpen(!sidebarOpen)} />
-            <Select options={config.glancesInstance}
+            <Select options={instance.instances}
                     style={{maxWidth: 300}}
-                    onChange={setInstance} value={instance} />
+                    onChange={(e) => setInstance({...instance, current: e})} value={instance.current} />
             
           </div>
 

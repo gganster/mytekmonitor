@@ -6,15 +6,25 @@
 
 */
 
-import {createContext, useState, useContext} from 'react';
-import config from 'config';
-
+import {createContext, useState, useContext, useEffect} from 'react';
+import axios from "axios";
 const Context = createContext();
 
-const Default = config.glancesInstance[0];
+const Default = {
+  instances: [],
+  current: null
+};
 
 const Provider = ({children}) => {
   const [ctx, setCtx] = useState({...Default});
+
+  useEffect(() => {
+    (async () => {
+      let res = await axios.get("/api/instances");
+      console.log(res);
+      setCtx({instances: res.data, current: res.data[0]});
+    })()
+  }, [])
 
   return (
     <Context.Provider value={[ctx, setCtx]}>
