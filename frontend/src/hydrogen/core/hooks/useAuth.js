@@ -3,9 +3,11 @@ import config from "config";
 import useNoAuth from "./_useNoAuth";
 import useFirebaseAuth from "./_useFirebaseAuth";
 import useStrapiAuth from "./_useStrapiAuth";
+import useExpressAuth from "./_useExpressAuth";
 
 const useAuthProvider = config.driver === "firebase" ? useFirebaseAuth :
                         config.driver === "strapi"   ? useStrapiAuth   :
+                        config.driver === "express"  ? useExpressAuth  :
                                                        useNoAuth;
 
 // interface
